@@ -1,0 +1,56 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 15px;
+    background-color: #fdd8d0;
+    padding: 30px;
+}
+
+#date {
+    font-size: 1.3rem;
+    font-family: 'Chivo', sans-serif;
+}
+
+#logoAda {
+  width: 150px;
+}
+
+/* #horloge {
+   
+    z-index: 2;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
+    color: black;
+    background: #fff3f1;
+    height: 200px;
+    border: 25px solid #e74c34;
+    padding: 1.5em;
+    border-radius: 15px;
+    width: 455px;
+} */
+
+#horloge {
+    display: flex;
+    font-family: 'Chivo', sans-serif;
+    color: black;
+    /* border: 2px solid #e74c34; */
+    border-radius: 15px;
+    width: auto;
+    font-size: 1.3rem;
+    justify-content: right;
+}
+
+/*   span {
+      font-size: 4.25rem;
+  } */
