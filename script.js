@@ -11,7 +11,6 @@ const jourDeLaSemaine = joursDeLaSemaine[indexJour];
 // On récupère le jour du mois
 const jourDuMois = nouvelleDate.getDate();
 
-
 //On récupère le mois
 const indexMois = nouvelleDate.getMonth();
 const moisDelAnnee = listeMois[indexMois];
@@ -22,45 +21,48 @@ dateDuJour.innerHTML = `${jourDeLaSemaine} ${jourDuMois} ${moisDelAnnee} chez`
 // On récupère la class container dans le HTML
 let messageJournee = document.querySelector("#message")
 
-//  On recupère les heures de la date du jour
-let heureActuelle = nouvelleDate.getHours()
 
 function messageAccueil() {
+  const aujourdhui = new Date()
+  let heureActuelle = aujourdhui.getHours()
     // On déclare la variable dans la fonction
-    let greeting ;
+    let message ;
     if (heureActuelle >= 8 && heureActuelle <12) {
-        greeting = "Bon matin !"
+        message = "Bon matin !"
     } else if (heureActuelle >=12 && heureActuelle <14) {
-        greeting = "Bon appétit !"
+        message = "Bon appétit !"
     } else if (heureActuelle >=14 && heureActuelle <18){
-        greeting = "Bon après-midi !"
+        message = "Bon après-midi !"
     } else if (heureActuelle >=18 && heureActuelle <19){
-        greeting = "Bonne soirée !"
+        message = "Bonne soirée !"
     } else {
         console.log("c'est la nuit")
-        greeting = ""
+        message = ""
     }
     // On ajoute le txt au HTML
-    messageJournee.innerHTML = `<h1>${greeting}</h1>`
+    messageJournee.innerHTML = `<h1>${message}</h1>`
 }
 messageAccueil()
-//setInterval(messageAccueil, 60000);
+setInterval(messageAccueil, 60000);
 
 // Horloge digitale
 function afficherHeure() {
-
-    let minutes = nouvelleDate.getMinutes();
-    let secondes = nouvelleDate.getSeconds();
+    const aujourdhui = new Date()
+    let heures = aujourdhui.getHours()
+    let minutes = aujourdhui.getMinutes();
+    let secondes = aujourdhui.getSeconds();
     
-    if (heureActuelle < 10) {
-      heureActuelle = "0" + heureActuelle;
-    } else if (minutes < 10) {
+    if (heures < 10) {
+      heures = "0" + heures;
+    } 
+    if (minutes < 10) {
       minutes = "0" + minutes;
-    } else if (secondes < 10) {
+    } 
+    if (secondes < 10) {
       secondes = "0" + secondes;
     }
     
-    document.getElementById("hour").innerHTML = `${heureActuelle}:`;
+    document.getElementById("hour").innerHTML = `${heures}:`;
     document.getElementById("minute").innerHTML = `${minutes}:`;
     document.getElementById("second").innerHTML = `${secondes}`;
   }
