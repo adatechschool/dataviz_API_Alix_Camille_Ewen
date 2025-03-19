@@ -1,7 +1,6 @@
 const dateDuJour = document.querySelector("#date");
 const joursDeLaSemaine = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
 const listeMois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
-
 const nouvelleDate = new Date();
 
 // On récupère le jour de la semaine
@@ -67,4 +66,29 @@ function afficherHeure() {
     document.getElementById("second").innerHTML = `${secondes}`;
   }
   
-  setInterval(afficherHeure, 500);
+setInterval(afficherHeure, 500);
+
+  // Barre de progression
+  function barreProgression(){
+    console.log()
+    const aujourdhui = new Date()
+    const heureOuverture = new Date()
+    heureOuverture.setHours(8, 30)
+    console.log(heureOuverture)
+    let ttt = aujourdhui-heureOuverture
+    console.log(ttt)
+    let heures = aujourdhui.getHours()
+    let minutes = aujourdhui.getMinutes();
+    if((heures >=8 && minutes >=30) || (heures <=18 && minutes <=30)) {
+      let barreProgression = 0;
+      barreProgression = Math.round(100*ttt/36000000)
+      console.log(barreProgression)
+      document.getElementById("progressBar").style.width = barreProgression + "%";
+
+    } 
+    
+  }
+  barreProgression()
+
+
+
