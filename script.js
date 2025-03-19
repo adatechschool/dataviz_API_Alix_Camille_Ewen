@@ -70,23 +70,17 @@ setInterval(afficherHeure, 500);
 
   // Barre de progression
   function barreProgression(){
-    console.log()
     const aujourdhui = new Date()
     const heureOuverture = new Date()
     heureOuverture.setHours(8, 30)
-    console.log(heureOuverture)
-    let ttt = aujourdhui-heureOuverture
-    console.log(ttt)
+    let taux = aujourdhui-heureOuverture
     let heures = aujourdhui.getHours()
     let minutes = aujourdhui.getMinutes();
     if((heures >=8 && minutes >=30) || (heures <=18 && minutes <=30)) {
       let barreProgression = 0;
-      barreProgression = Math.round(100*ttt/36000000)
-      console.log(barreProgression)
+      barreProgression = Math.round(100*taux/36000000)
       document.getElementById("progressBar").style.width = barreProgression + "%";
-
     } 
-    
   }
   barreProgression()
 
