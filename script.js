@@ -84,5 +84,40 @@ setInterval(afficherHeure, 500);
   }
   barreProgression()
 
+  // Requête API
+
+// On récupère le button / l'image ect..
+
+let bicloo = document.querySelector("#bicloo")
+
+
+// On créé la function changePokemon 
+    // la const est = à la fonction qui va faire la requête vers l'API
+
+const appelApi = async() => {
+   
+    //  Gerer de façon dynamique la requête vers l'URL en injectant le randomNumber
+    let requete = "https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_disponibilite-temps-reel-velos-libre-service-naolib-nantes-metropole/records?where=name%3D%22MOUTONNERIE%22&limit=1"; 
+
+    //  On stock la réponse de la requête dans data
+    let data = await fetch(requete)
+    //  On vérif avec console.log
+    console.log(data)
+
+    //   On transforme la réponse au format JSON
+    let response = await data.json()
+    //  On vérifie avec console.log
+    console.log(response)
+
+    const { name } = response.results[0];
+
+  bicloo.textContent = name
+
+
+}
+// Pour initialiser le jeu on appelle la fonction
+appelApi()
+
+
 
 
