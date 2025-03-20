@@ -6,6 +6,9 @@
     <title>Document</title>
     <script src="script.js" defer></script>
     <link href ="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Borel&display=swap" rel="stylesheet">
 </head>
 <body>
     
@@ -19,12 +22,17 @@
     </div>
 </header>
 <main>
-    <div class="conteneurHeure">
-        <div id="message"></div>
+    <div class="conteneurHorairesCampus">
+        <div class ="heureOuverture">8:30 </div>
+        <div class ="heureFermeture">18:30</div>
     </div>
+
     <div id="progressContainer">
-        <div id="progressBar" ></div>
-        <span class="percentage">0%</span></div>
+        <div id="progressBar" >
+            <div id="messageAccueil"></div>
+        </div>
+    </div>
+
     <div class ="conteneurApi">
         <div id="station"></div>
         <div id="adresseStation"></div>
@@ -32,6 +40,7 @@
         <div id="placesDispo"></div>
     </div>
 </main>
+
 <footer>
 
 </footer>  

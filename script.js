@@ -18,7 +18,7 @@ const moisDelAnnee = listeMois[indexMois];
 dateDuJour.innerHTML = `${jourDeLaSemaine} ${jourDuMois} ${moisDelAnnee} chez`
 
 // On récupère la class container dans le HTML
-let messageJournee = document.querySelector("#message")
+let messageJournee = document.querySelector("#messageAccueil")
 
 
 function messageAccueil() {
@@ -39,7 +39,7 @@ function messageAccueil() {
     message = ""
   }
   // On ajoute le txt au HTML
-  messageJournee.innerHTML = `<h1>${message}</h1>`
+  messageJournee.innerHTML = `${message}`
 }
 messageAccueil()
 setInterval(messageAccueil, 60000);
