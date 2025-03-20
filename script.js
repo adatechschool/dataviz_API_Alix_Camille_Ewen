@@ -86,10 +86,10 @@ barreProgression()
 setInterval(barreProgression, 500000)
 
 // Requête API
-let station = document.querySelector("#station")
-let adresseStation = document.querySelector("#adresseStation")
-let velosDispo = document.querySelector("#velosDispo")
-let placesDispo = document.querySelector("#placesDispo")
+const station = document.querySelector("#station")
+const adresseStation = document.querySelector("#adresseStation")
+const velosDispo = document.querySelector("#velosDispo")
+const placesDispo = document.querySelector("#placesDispo")
 
 async function appelApi() {
   let requete = "https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_disponibilite-temps-reel-velos-libre-service-naolib-nantes-metropole/records?where=name%3D%22MOUTONNERIE%22&limit=1"; 
@@ -104,8 +104,3 @@ async function appelApi() {
   placesDispo.textContent = `En ce moment, il y a ${available_bike_stands} places disponibles !`
 }
 appelApi()
-
-
-
-
-

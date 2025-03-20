@@ -22,59 +22,38 @@ header {
   width: 150px;
 }
 
-/* #horloge {
-   
-    z-index: 2;
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    
-    color: black;
-    background: #fff3f1;
-    height: 200px;
-    border: 25px solid #e74c34;
-    padding: 1.5em;
-    border-radius: 15px;
-    width: 455px;
-} */
 
 #horloge {
     display: flex;
     font-family: 'Chivo', sans-serif;
     color: black;
-    /* border: 2px solid #e74c34; */
     border-radius: 15px;
     width: auto;
     font-size: 1.3rem;
     justify-content: right;
 }
 
-/*   span {
-      font-size: 4.25rem;
-  } */
 
-  #progressContainer {
-    width: 100%;
-    height: 15px;
-    background-color: #CCCCCC;
-    border-radius: 5px;
-    overflow: hidden;
-    position: relative;
+#progressContainer {
+  width: 100%;
+  height: 15px;
+  background-color: #CCCCCC;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+#progressBar {
+  width: 0%;
+  height: 20px;
+  background: linear-gradient(223deg, rgba(26,117,255,1) 0%, rgba(80,202,215,1) 100%);
+  transition: width 2s ease 0s;
   }
-  #progressBar {
-    width: 0%;
-    height: 20px;
-    background: linear-gradient(223deg, rgba(26,117,255,1) 0%, rgba(80,202,215,1) 100%);
-    transition: width 2s ease 0s;
-  }
-  .percentage {
-    position: absolute;
-    right: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: white;
-    padding-right: 5px;
-  }
+.percentage {
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: white;
+  padding-right: 5px;
+}
