@@ -1,37 +1,51 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 15px;
-    background-color: #fdd8d0;
-    padding: 30px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 15px;
+  background-color: #fdd8d0;
+  padding: 30px;
+  position: relative;
+  text-align: center;
 }
 
 #date {
-    font-size: 1.3rem;
-    font-family: 'Chivo', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-family: 'Chivo', sans-serif;
 }
 
 #logoAda {
-  width: 150px;
+  width: clamp(130px, 15vw, 150px);
 }
-
 
 #horloge {
-    display: flex;
-    font-family: 'Chivo', sans-serif;
-    color: black;
-    border-radius: 15px;
-    width: auto;
-    font-size: 1.3rem;
-    justify-content: right;
+  font-family: 'Chivo', sans-serif;
+  color: black;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  position: absolute;
+  right: 30px;
 }
+
+/* Responsive */
+
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #horloge {
+    position: static;
+  }
+}
+
+/* Fin du Responsive */
 
 
 #progressContainer {
@@ -56,4 +70,16 @@ header {
   font-size: 16px;
   color: white;
   padding-right: 5px;
+}
+
+
+/* Footer */
+
+footer {
+  background-color: #fdd8d0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
 }
