@@ -100,7 +100,7 @@ async function appelApi() {
 
   station.textContent = `Station : ${name}`
   adresseStation.textContent = `Adresse : ${address}`
-  velosDispo.textContent = `En ce moment, il y a ${available_bikes} vélos disponibles !`
-  placesDispo.textContent = `En ce moment, il y a ${available_bike_stands} places disponibles !`
+  velosDispo.textContent = `👉${available_bikes} vélos disponibles !`
+  placesDispo.textContent = `👉${available_bike_stands} places disponibles !`
 }
 appelApi()
