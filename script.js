@@ -42,7 +42,7 @@ function messageAccueil() {
   messageJournee.innerHTML = `${message}`
 }
 messageAccueil()
-setInterval(messageAccueil, 60000);
+setInterval(messageAccueil, 1000);
 
 // Horloge digitale
 function afficherHeure() {
@@ -83,7 +83,7 @@ function barreProgression(){
   } 
 }
 barreProgression()
-setInterval(barreProgression, 500000)
+setInterval(barreProgression, 1000)
 
 // Requête API
 const station = document.querySelector("#station")
@@ -103,4 +103,4 @@ async function appelApi() {
   velosDispo.textContent = `👉${available_bikes} vélos disponibles !`
   placesDispo.textContent = `👉${available_bike_stands} places disponibles !`
 }
-appelApi()
+setInterval(appelApi, 1000)
