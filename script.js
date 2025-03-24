@@ -110,6 +110,7 @@ const temperatureLocale = document.querySelector("#temperature");
 const zoneCoucherSoleil = document.querySelector("#coucherSoleil");
 
 async function getWeather() {
+  //Lien pour coordonnées ADA, heure sunset, température actuelle, probabilité de précipitation par 15mins
   let address = "https://api.open-meteo.com/v1/forecast?latitude=47.2199&longitude=-1.5325&daily=sunset&models=meteofrance_seamless&current=temperature_2m&minutely_15=precipitation_probability&timezone=Europe%2FLondon&forecast_days=1"; 
   let promise = await fetch(address);
   let data = await promise.json();
