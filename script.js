@@ -117,7 +117,7 @@ async function getWeather() {
   const {current, current_units, daily} = data;
 
   //J'affiche la température locale et son unité
-  temperatureLocale.textContent = `${current.temperature_2m} ${current_units.temperature_2m}`
+  temperatureLocale.textContent = `🌡 ${current.temperature_2m}${current_units.temperature_2m}`
   
   //Je récupère l'heure du coucher de soleil et transforme le format en Date, puis calcule la durée d'ensoleillement restant.
   const coucherSoleil = daily.sunset[0];
@@ -130,7 +130,7 @@ async function getWeather() {
   let heuresSoleil = Math.floor(dureeSoleilMilliS/1000/60/60)%24;
   let minutesSoleil = Math.floor(dureeSoleilMilliS/1000/60)%60;
   
-  zoneCoucherSoleil.textContent = heuresSoleil + "h" + minutesSoleil;
+  zoneCoucherSoleil.textContent = `🌆 ${heuresSoleil}h${minutesSoleil}`;
 }
 
 setInterval(getWeather, 1000);
