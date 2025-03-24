@@ -50,21 +50,21 @@ function afficherHeure() {
   let heures = aujourdhui.getHours()
   let minutes = aujourdhui.getMinutes();
   let secondes = aujourdhui.getSeconds();
-  
+
   if (heures < 10) {
     heures = "0" + heures;
-  } 
+  }
   if (minutes < 10) {
     minutes = "0" + minutes;
-  } 
+  }
   if (secondes < 10) {
     secondes = "0" + secondes;
   }
-  
+
   document.getElementById("hour").innerHTML = `${heures}:`;
   document.getElementById("minute").innerHTML = `${minutes}:`;
   document.getElementById("second").innerHTML = `${secondes}`;
-}  
+}
 setInterval(afficherHeure, 500);
 
 // Barre de progression
@@ -75,12 +75,12 @@ function barreProgression(){
   let taux = aujourdhui-heureOuverture
   let heures = aujourdhui.getHours()
   let minutes = aujourdhui.getMinutes();
-  
+
   if((heures >=8 && minutes >=30) || (heures <=18 && minutes <=30)) {
     let barreProgression = 0;
     barreProgression = Math.round(100*taux/36000000)
     document.getElementById("progressBar").style.width = barreProgression + "%";
-  } 
+  }
 }
 barreProgression()
 setInterval(barreProgression, 1000)
@@ -92,7 +92,7 @@ const velosDispo = document.querySelector("#velosDispo")
 const placesDispo = document.querySelector("#placesDispo")
 
 async function appelApi() {
-  let requete = "https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_disponibilite-temps-reel-velos-libre-service-naolib-nantes-metropole/records?where=name%3D%22MOUTONNERIE%22&limit=1"; 
+  let requete = "https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_disponibilite-temps-reel-velos-libre-service-naolib-nantes-metropole/records?where=name%3D%22MOUTONNERIE%22&limit=1";
   let data = await fetch(requete)
   let response = await data.json()
 
@@ -104,3 +104,21 @@ async function appelApi() {
   placesDispo.textContent = `👉${available_bike_stands} places disponibles !`
 }
 setInterval(appelApi, 1000)
+
+// Requête API Tram
+const ligneTram = document.querySelector("#ligne")
+const terminusTram = document.querySelector("#terminus")
+const tempsTram = document.querySelector("#temps")
+
+async function appelApiTram() {
+  let requete = "https://open.tan.fr/ewp/tempsattente.json/MOUT";
+  let data = await fetch(requete)
+  let response = await data.json()
+
+  const { terminus, temps, ligne } = response[0];
+
+  ligneTram.textContent = `Ligne : ${ligne.numLigne}`
+  terminusTram.textContent = `Terminus : ${terminus}`
+  temps === "" ? tempsTram.textContent = "A venir..." : tempsTram.textContent = `👉${temps}`
+}
+setInterval(appelApiTram, 1000)
