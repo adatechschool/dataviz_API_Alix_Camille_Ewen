@@ -114,13 +114,11 @@ async function appelApiTram() {
   let requete = "https://open.tan.fr/ewp/tempsattente.json/MOUT";
   let data = await fetch(requete)
   let response = await data.json()
-  console.log(response);
 
   const { terminus, temps, ligne } = response[0];
-  console.log(terminus)
 
   ligneTram.textContent = `Ligne : ${ligne.numLigne}`
   terminusTram.textContent = `Terminus : ${terminus}`
-  tempsTram.textContent = `👉${temps}`
+  temps === "" ? tempsTram.textContent = "A venir..." : tempsTram.textContent = `👉${temps}`
 }
 setInterval(appelApiTram, 1000)
