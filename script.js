@@ -134,4 +134,5 @@ async function getWeather() {
   zoneCoucherSoleil.textContent = `🌆 ${heuresSoleil}h${minutesSoleil}`;
 }
 
-setInterval(getWeather, 1000);
+getWeather()
+setInterval(getWeather, 3600000);
