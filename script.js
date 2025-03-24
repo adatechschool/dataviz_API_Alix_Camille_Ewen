@@ -85,7 +85,7 @@ function barreProgression(){
 barreProgression()
 setInterval(barreProgression, 1000)
 
-// Requête API
+// Requête API 
 const station = document.querySelector("#station")
 const adresseStation = document.querySelector("#adresseStation")
 const velosDispo = document.querySelector("#velosDispo")
@@ -105,6 +105,38 @@ async function appelApi() {
 }
 setInterval(appelApi, 1000)
 
+//Requête API Météo
+const temperatureLocale = document.querySelector("#temperature");
+const zoneCoucherSoleil = document.querySelector("#coucherSoleil");
+
+async function getWeather() {
+  //Lien pour coordonnées ADA, heure sunset, température actuelle, probabilité de précipitation par 15mins
+  let address = "https://api.open-meteo.com/v1/forecast?latitude=47.2199&longitude=-1.5325&daily=sunset&models=meteofrance_seamless&current=temperature_2m&minutely_15=precipitation_probability&timezone=Europe%2FLondon&forecast_days=1"; 
+  let promise = await fetch(address);
+  let data = await promise.json();
+
+  const {current, current_units, daily} = data;
+
+  //J'affiche la température locale et son unité
+  temperatureLocale.textContent = `🌡 ${current.temperature_2m}${current_units.temperature_2m}`
+  
+  //Je récupère l'heure du coucher de soleil et transforme le format en Date, puis calcule la durée d'ensoleillement restant.
+  const coucherSoleil = daily.sunset[0];
+  
+  let formatDateCoucherSoleil = new Date()
+  formatDateCoucherSoleil.setHours(coucherSoleil[11] + coucherSoleil[12])
+  formatDateCoucherSoleil.setMinutes(coucherSoleil[14] + coucherSoleil[15])
+
+  let dureeSoleilMilliS = formatDateCoucherSoleil - new Date();
+  let heuresSoleil = Math.floor(dureeSoleilMilliS/1000/60/60)%24;
+  let minutesSoleil = Math.floor(dureeSoleilMilliS/1000/60)%60;
+  
+  zoneCoucherSoleil.textContent = `🌆 ${heuresSoleil}h${minutesSoleil}`;
+}
+
+getWeather()
+setInterval(getWeather, 3600000);
+
 // Requête API Tram
 const ligneTram = document.querySelector("#ligne")
 const terminusTram = document.querySelector("#terminus")
@@ -122,3 +154,4 @@ async function appelApiTram() {
   temps === "" ? tempsTram.textContent = "A venir..." : tempsTram.textContent = `👉${temps}`
 }
 setInterval(appelApiTram, 1000)
+

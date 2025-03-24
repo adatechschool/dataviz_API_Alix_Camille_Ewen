@@ -113,6 +113,29 @@ footer {
   gap: 15px;
 }
 
+
+.conteneurMeteo {
+  /* Style de la div générale */
+  width: 25em;
+  font-size: 1em;
+  background: linear-gradient(-240deg, #fdd8d0 70%, #e94e39 70%);
+  padding: 4em 1em;
+  border: 5px;
+  border-radius: 0.4em;
+  border-style: solid;
+  border-color: #e94e39;
+  box-shadow: 0 1.3em 1.8em rgba(94, 72, 181, 0.25);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  word-spacing: 0.4em;
+  text-align: center;
+}
+.conteneurMeteo, p {
+  font-weight: bolder;
+  padding: 0.6rem;
+}
+
+
 .conteneurBicloo {
   /* Style de la div générale */
   width: 25em;
@@ -131,7 +154,7 @@ footer {
 }
 .conteneurBicloo, p {
   font-weight: bolder;
-  padding: 0.6rem
+  padding: 0.6rem;
 }
 
 .conteneurTram {
@@ -155,6 +178,7 @@ footer {
   padding: 0.6rem
 }
 
+
 @media screen and (max-width: 825px) {
   .conteneurApi {
     flex-direction: column;
@@ -169,6 +193,7 @@ footer {
     margin: 80px 0 80px 0;
   }
 
+
   .conteneurBicloo,
   .conteneurTram {
     width: 100%;
@@ -180,4 +205,4 @@ footer {
   footer {
     position: relative;
   }
-}
+
