@@ -94,10 +94,11 @@ async function appelApi() {
 
   station.textContent = `Station : ${name}`
   adresseStation.textContent = `Adresse : ${address}`
-  velosDispo.textContent = `👉${available_bikes} vélos disponibles !`
-  placesDispo.textContent = `👉${available_bike_stands} places disponibles !`
+  available_bikes <= 1 ? velosDispo.textContent = `👉${available_bikes} vélo disponible !` : velosDispo.textContent = `👉${available_bikes} vélos disponibles !`
+  placesDispo <= 1 ? placesDispo.textContent = `👉${available_bike_stands} place disponible !` : placesDispo.textContent = `👉${available_bike_stands} places disponibles !`
 }
-setInterval(appelApi, 1000)
+appelApi()
+setInterval(appelApi, 300000)
 
 //Requête API Météo
 const temperatureLocale = document.querySelector("#temperature");
@@ -105,7 +106,7 @@ const zoneCoucherSoleil = document.querySelector("#coucherSoleil");
 
 async function getWeather() {
   //Lien pour coordonnées ADA, heure sunset, température actuelle, probabilité de précipitation par 15mins
-  let address = "https://api.open-meteo.com/v1/forecast?latitude=47.2199&longitude=-1.5325&daily=sunset&models=meteofrance_seamless&current=temperature_2m&minutely_15=precipitation_probability&timezone=Europe%2FLondon&forecast_days=1"; 
+  let address = "https://api.open-meteo.com/v1/forecast?latitude=47.2199&longitude=-1.5325&daily=sunset&models=meteofrance_seamless&current=temperature_2m&minutely_15=precipitation_probability&timezone=Europe%2FLondon&forecast_days=1";
   let promise = await fetch(address);
   let data = await promise.json();
 
@@ -113,10 +114,10 @@ async function getWeather() {
 
   //J'affiche la température locale et son unité
   temperatureLocale.textContent = `🌡 ${current.temperature_2m}${current_units.temperature_2m}`
-  
+
   //Je récupère l'heure du coucher de soleil et transforme le format en Date, puis calcule la durée d'ensoleillement restant.
   const coucherSoleil = daily.sunset[0];
-  
+
   let formatDateCoucherSoleil = new Date()
   formatDateCoucherSoleil.setHours(coucherSoleil[11] + coucherSoleil[12])
   formatDateCoucherSoleil.setMinutes(coucherSoleil[14] + coucherSoleil[15])
