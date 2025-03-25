@@ -23,6 +23,57 @@ header {
   text-align: center;
 }
 
+.popsicle {
+  height: 60px;
+  width: 45px;
+  position: absolute;
+  left: 5%;
+  top: calc(40% - 30px);
+  border-radius: 7.5em 7.5em 0.9em 0.9em;
+  background: repeating-linear-gradient(
+    -30deg,
+    #e94e39 0,
+    #e94e39 10px,
+    #e9ca00 10px,
+    #e9ca00 15px,
+    #fcf3b2 15px,
+    #fcf3b2 20px,
+    #fdd8d0 20px,
+    #fdd8d0 25px
+  );
+  background-size: 375em;
+  animation: move 120s infinite linear;
+}
+@keyframes move {
+  100% {
+    background-position: -312.5em;
+  }
+}
+.popsicle:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 15px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 1.25em;
+  top: 60px;
+  left: 15px;
+}
+.popsicle:after {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 15px;
+  background: linear-gradient(#975d39 1.25em, #d7965b 1.25em);
+  top: 60px;
+  left: 15px;
+  border-radius: 0 0 1.87em 1.87em;
+}
+@media screen and (min-width: 600px) {
+  .popsicle {
+    font-size: 1.2em;
+  }
+}
 #date {
   font-size: clamp(1.1rem, 2vw, 1.3rem);
 }
