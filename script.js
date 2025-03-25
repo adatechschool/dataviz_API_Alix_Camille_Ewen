@@ -1,30 +1,25 @@
 const dateDuJour = document.querySelector("#date");
 const joursDeLaSemaine = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
 const listeMois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
-const nouvelleDate = new Date();
 
-// On récupère le jour de la semaine
-const indexJour = nouvelleDate.getDay();
-const jourDeLaSemaine = joursDeLaSemaine[indexJour];
-
-// On récupère le jour du mois
-const jourDuMois = nouvelleDate.getDate();
-
-//On récupère le mois
-const indexMois = nouvelleDate.getMonth();
-const moisDelAnnee = listeMois[indexMois];
+function afficherDate() {
+  const nouvelleDate = new Date();
+  const indexJour = nouvelleDate.getDay();
+  const jourDeLaSemaine = joursDeLaSemaine[indexJour];
+  const jourDuMois = nouvelleDate.getDate();
+  const indexMois = nouvelleDate.getMonth();
+  const moisDelAnnee = listeMois[indexMois];
 
 //On affiche la date du jour dans le header
 dateDuJour.innerHTML = `${jourDeLaSemaine} ${jourDuMois} ${moisDelAnnee} chez`
-
-// On récupère la class container dans le HTML
-let messageJournee = document.querySelector("#messageAccueil")
-
+}
+afficherDate()
 
 function messageAccueil() {
+  let messageJournee = document.querySelector("#messageAccueil")
   const aujourdhui = new Date()
   let heureActuelle = aujourdhui.getHours()
-  // On déclare la variable dans la fonction
+
   let message ;
   if (heureActuelle >= 8 && heureActuelle <12) {
     message = "Bon matin !"
@@ -35,7 +30,6 @@ function messageAccueil() {
   } else if (heureActuelle >=18 && heureActuelle <19){
     message = "Bonne soirée !"
   } else {
-    console.log("c'est la nuit")
     message = ""
   }
   // On ajoute le txt au HTML
@@ -85,7 +79,7 @@ function barreProgression(){
 barreProgression()
 setInterval(barreProgression, 1000)
 
-// Requête API 
+// Requête API Bicloo
 const station = document.querySelector("#station")
 const adresseStation = document.querySelector("#adresseStation")
 const velosDispo = document.querySelector("#velosDispo")
@@ -130,8 +124,12 @@ async function getWeather() {
   let dureeSoleilMilliS = formatDateCoucherSoleil - new Date();
   let heuresSoleil = Math.floor(dureeSoleilMilliS/1000/60/60)%24;
   let minutesSoleil = Math.floor(dureeSoleilMilliS/1000/60)%60;
-  
-  zoneCoucherSoleil.textContent = `🌆 ${heuresSoleil}h${minutesSoleil}`;
+
+  if (minutesSoleil < 10){
+  zoneCoucherSoleil.textContent = `🌆 ${heuresSoleil}h0${minutesSoleil}`;
+  } else {
+    zoneCoucherSoleil.textContent = `🌆 ${heuresSoleil}h${minutesSoleil}`
+  }
 }
 
 getWeather()
