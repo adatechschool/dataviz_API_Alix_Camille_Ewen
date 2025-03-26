@@ -105,8 +105,7 @@ function barreProgression() {
   const minutes = aujourdhui.getMinutes();
 
   if ((heures >= 8 && minutes >= 30) || (heures <= 18 && minutes <= 30)) {
-    let barreProgression = 0;
-    barreProgression = Math.round((100 * taux) / 36000000);
+    let barreProgression = Math.round((100 * taux) / 36000000);
     document.getElementById("progressBar").style.width = barreProgression + "%";
   }
 }
