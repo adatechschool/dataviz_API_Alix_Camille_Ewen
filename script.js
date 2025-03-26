@@ -9,8 +9,9 @@ const PLACES_DISPO = document.querySelector("#placesDispo");
 // Const API Météo
 const TEMPERATURE_LOCALE = document.querySelector("#temperature");
 const ZONE_COUCHER_SOLEIL = document.querySelector("#coucherSoleil");
+const TEXTE_COUCHER_SOLEIL = document.querySelector("#texteCoucherSoleil");
 
-// Requête API Tram
+// Const API Tram
 const LIGNE_TRAM = document.querySelector("#ligne");
 const TERMINUS_TRAM = document.querySelector("#terminus");
 const TEMPS_TRAM = document.querySelector("#temps");
@@ -89,9 +90,7 @@ function afficherHeure() {
     secondes = "0" + secondes;
   }
 
-  document.getElementById("hour").innerHTML = `${heures}:`;
-  document.getElementById("minute").innerHTML = `${minutes}:`;
-  document.getElementById("second").innerHTML = `${secondes}`;
+  document.querySelector("#horloge").innerHTML =  `${heures}:${minutes}:${secondes}`;
 }
 
 // Barre de progression
@@ -100,10 +99,10 @@ function barreProgression() {
   const heureOuverture = new Date();
   heureOuverture.setHours(8, 30);
 
-  // Modifier en const
-  let taux = aujourdhui - heureOuverture;
-  let heures = aujourdhui.getHours();
-  let minutes = aujourdhui.getMinutes();
+  
+  const taux = aujourdhui - heureOuverture;
+  const heures = aujourdhui.getHours();
+  const minutes = aujourdhui.getMinutes();
 
   if ((heures >= 8 && minutes >= 30) || (heures <= 18 && minutes <= 30)) {
     let barreProgression = 0;
@@ -154,16 +153,20 @@ async function appelApiMeteo() {
 
   let dureeSoleilMilliS = formatDateCoucherSoleil - new Date();
 
-  dureeSoleilMilliS <= 0 ? (ZONE_COUCHER_SOLEIL.textContent = "🌛") : "";
-
-  let heuresSoleil = Math.floor(dureeSoleilMilliS / 1000 / 60 / 60) % 24;
-  let minutesSoleil = Math.floor(dureeSoleilMilliS / 1000 / 60) % 60;
-
-  if (minutesSoleil < 10) {
-    ZONE_COUCHER_SOLEIL.textContent = `🌆 ${heuresSoleil}h0${minutesSoleil}`;
-  } else {
-    ZONE_COUCHER_SOLEIL.textContent = `🌆 ${heuresSoleil}h${minutesSoleil}`;
+  if (dureeSoleilMilliS <= 0){
+    ZONE_COUCHER_SOLEIL.textContent = "🌛";
+    TEXTE_COUCHER_SOLEIL.textContent = "";
+  } else {  
+    let heuresSoleil = Math.floor(dureeSoleilMilliS / 1000 / 60 / 60) % 24;
+    let minutesSoleil = Math.floor(dureeSoleilMilliS / 1000 / 60) % 60;
+  
+    if (minutesSoleil < 10) {
+      ZONE_COUCHER_SOLEIL.textContent = `🌆 ${heuresSoleil}h0${minutesSoleil}`;
+    } else {
+      ZONE_COUCHER_SOLEIL.textContent = `🌆 ${heuresSoleil}h${minutesSoleil}`;
+    }
   }
+
 }
 
 // Requête API Tram
